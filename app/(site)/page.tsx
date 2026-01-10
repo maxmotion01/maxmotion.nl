@@ -4,6 +4,7 @@ import { Sparkles, Rocket, Calendar, Star, Cog, Lightbulb, GraduationCap, Compas
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { AIScanForm } from "@/components/ai-scan-form";
+import { ROICalculator } from "@/components/roi-calculator";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -41,7 +42,7 @@ export default function HomePage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="/contact">
+                <Link href="#ai-scan">
                   <Button size="lg" className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-xl">
                     <Rocket className="mr-2 h-5 w-5" />
                     Start met Gratis AI Scan
@@ -126,7 +127,7 @@ export default function HomePage() {
               <div className="bg-gradient-to-br from-[#FF6B35] to-[#F7931E] rounded-xl p-4 w-16 h-16 flex items-center justify-center mb-6">
                 <Cog className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-[#1A1F2E] mb-4">AI Automation</h3>
+              <h3 className="text-2xl font-bold text-[#1A1F2E] mb-4">AI Ontwikkeling</h3>
               <p className="text-[#4A4A4A] mb-6">Automatiseer repetitieve taken en verhoog efficiency met slimme AI-oplossingen.</p>
               <Link href="/diensten/ai-automation" className="text-[#FF6B35] font-semibold hover:text-[#F7931E] transition">
                 Meer info <ArrowRight className="inline h-4 w-4 ml-2" />
@@ -222,6 +223,19 @@ export default function HomePage() {
                 Uw gegevens worden vertrouwelijk behandeld
               </p>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ROI Calculator */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <Container>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-[#1A1F2E] mb-4">Bereken uw AI-besparing</h2>
+              <p className="text-xl text-[#4A4A4A]">Ontdek hoeveel tijd en geld u kunt besparen met AI Ontwikkeling</p>
+            </div>
+            <ROICalculator />
           </div>
         </Container>
       </section>

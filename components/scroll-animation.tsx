@@ -1,0 +1,132 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+interface ScrollAnimationProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  direction?: "up" | "down" | "left" | "right" | "fade";
+}
+
+export function ScrollAnimation({
+  children,
+  className = "",
+  delay = 0,
+  direction = "up",
+}: ScrollAnimationProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setIsVisible(true), delay);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay]);
+
+  const getTransform = () => {
+    if (isVisible) return "translate(0, 0)";
+    switch (direction) {
+      case "up":
+        return "translateY(40px)";
+      case "down":
+        return "translateY(-40px)";
+      case "left":
+        return "translateX(40px)";
+      case "right":
+        return "translateX(-40px)";
+      case "fade":
+        return "translate(0, 0)";
+      default:
+        return "translateY(40px)";
+    }
+  };
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: getTransform(),
+        transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+interface CountUpProps {
+  end: number;
+  duration?: number;
+  suffix?: string;
+  prefix?: string;
+  className?: string;
+}
+
+export function CountUp({
+  end,
+  duration = 2000,
+  suffix = "",
+  prefix = "",
+  className = "",
+}: CountUpProps) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    const startTime = Date.now();
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easeOut * end));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [hasStarted, end, duration]);
+
+  return (
+    <span ref={ref} className={className}>
+      {prefix}{count}{suffix}
+    </span>
+  );
+}

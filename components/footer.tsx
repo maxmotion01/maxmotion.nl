@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Brain, Linkedin, Twitter, Instagram, ArrowRight } from "lucide-react";
+import { Brain, Linkedin, ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 
@@ -19,24 +19,15 @@ export function Footer() {
               AI-oplossingen die uw bedrijf vooruit brengen. Van automatisering tot advies.
             </p>
             <div className="flex space-x-4">
-              <Link 
-                href="#" 
+              <a 
+                href="https://www.linkedin.com/in/kbdphilips/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-white bg-opacity-10 hover:bg-opacity-20 rounded-full p-3 transition"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </Link>
-              <Link 
-                href="#" 
-                className="bg-white bg-opacity-10 hover:bg-opacity-20 rounded-full p-3 transition"
-              >
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link 
-                href="#" 
-                className="bg-white bg-opacity-10 hover:bg-opacity-20 rounded-full p-3 transition"
-              >
-                <Instagram className="h-5 w-5" />
-              </Link>
+              </a>
             </div>
           </div>
           
@@ -45,7 +36,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link href="/diensten/ai-automation" className="text-gray-400 hover:text-[#FF6B35] transition">
-                  AI Automation
+                  AI Ontwikkeling
                 </Link>
               </li>
               <li>
@@ -123,7 +114,7 @@ export function Footer() {
               <Link href="/legal/terms" className="text-gray-400 hover:text-[#FF6B35] text-sm transition">
                 Algemene voorwaarden
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-[#FF6B35] text-sm transition">
+              <Link href="/legal/privacy#cookies" className="text-gray-400 hover:text-[#FF6B35] text-sm transition">
                 Cookiebeleid
               </Link>
             </div>

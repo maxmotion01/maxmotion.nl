@@ -1,0 +1,77 @@
+# Max Motion - AI Oplossingen voor Bedrijven
+# https://maxmotion.nl
+
+## Over Max Motion
+Max Motion is een Nederlands bedrijf gespecialiseerd in AI-oplossingen voor organisaties. Wij helpen bedrijven met AI-ontwikkeling, trainingen en strategisch advies.
+
+## Diensten
+
+### AI Ontwikkeling
+- Automatisering van bedrijfsprocessen met AI
+- Microsoft Fabric implementatie (data & analytics platform)
+- Microsoft Foundry implementatie (AI innovatie platform)
+- Factuurverwerking automatisering
+- Chatbot ontwikkeling
+- Predictive maintenance
+- Lead generatie systemen
+- Urenverwerking automatisering
+- Voorraad- en asset management
+
+### AI Trainingen
+- ChatGPT Training: Leer effectief werken met ChatGPT
+- Microsoft Copilot Training: AI integratie in Microsoft 365
+- Google Gemini Training: Google's AI-model toepassen
+- EU AI Act Training: Compliance en governance voor AI
+- AI Inspiratie Sessies: Ontdek AI-mogelijkheden voor jouw organisatie
+
+### AI Advies
+- Strategisch AI advies
+- AI implementatie begeleiding
+- AI roadmap ontwikkeling
+- AI governance en compliance
+
+## Contact
+- Website: https://maxmotion.nl
+- E-mail: contact@maxmotion.nl
+- Telefoon: +31 6 83969593
+- Adres: Nijenrodestraat 16, 3223VG Hellevoetsluis, Nederland
+
+## Belangrijke Pagina's
+- Homepage: https://maxmotion.nl
+- AI Ontwikkeling: https://maxmotion.nl/diensten/ai-automation
+- AI Training: https://maxmotion.nl/diensten/ai-training
+- AI Advies: https://maxmotion.nl/diensten/ai-advies
+- Contact: https://maxmotion.nl/contact
+- Over Ons: https://maxmotion.nl/over-ons
+
+## Specifieke Training Pagina's
+- ChatGPT: https://maxmotion.nl/diensten/ai-training/chatgpt
+- Copilot: https://maxmotion.nl/diensten/ai-training/copilot
+- Gemini: https://maxmotion.nl/diensten/ai-training/gemini
+- EU AI Act: https://maxmotion.nl/diensten/ai-training/eu-ai-act
+- AI Inspiratie: https://maxmotion.nl/diensten/ai-inspiratie
+
+## Microsoft Technologie
+- Microsoft Fabric: https://maxmotion.nl/diensten/ai-automation/microsoft-fabric
+- Microsoft Foundry: https://maxmotion.nl/diensten/ai-automation/microsoft-foundry
+
+## Kernwaarden
+- Praktische AI-implementatie
+- Maatwerk oplossingen
+- Training en adoptie ondersteuning
+- Continue optimalisatie
+- Compliance met EU AI Act
+
+## Doelgroep
+- MKB bedrijven in Nederland
+- Enterprise organisaties
+- Overheden en gemeenten
+- Non-profit organisaties
+
+## Expertise
+- Microsoft technologie (Fabric, Foundry, Copilot)
+- OpenAI / ChatGPT
+- Google Gemini
+- AI governance en compliance
+- Proces automatisering
+- Data analytics en BI

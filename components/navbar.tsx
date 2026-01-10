@@ -2,20 +2,28 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Brain } from "lucide-react";
+import { Menu, X, Brain, ChevronDown } from "lucide-react";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "AI Automation", href: "/diensten/ai-automation" },
-  { name: "AI Inspiratie", href: "/diensten/ai-inspiratie" },
-  { name: "AI Training", href: "/diensten/ai-training" },
+  { name: "AI Ontwikkeling", href: "/diensten/ai-automation" },
   { name: "AI Advies", href: "/diensten/ai-advies" },
-  ];
+];
+
+const trainingSubmenu = [
+  { name: "Alle Trainingen", href: "/diensten/ai-training" },
+  { name: "AI Inspiratie", href: "/diensten/ai-inspiratie" },
+  { name: "ChatGPT Training", href: "/diensten/ai-training/chatgpt" },
+  { name: "Copilot Training", href: "/diensten/ai-training/copilot" },
+  { name: "Gemini Training", href: "/diensten/ai-training/gemini" },
+  { name: "EU AI Act Training", href: "/diensten/ai-training/eu-ai-act" },
+];
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isTrainingMenuOpen, setIsTrainingMenuOpen] = useState(false);
 
   return (
     <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
@@ -41,6 +49,32 @@ export function Navbar() {
                     </Link>
                   </li>
                 ))}
+                <li 
+                  className="relative"
+                  onMouseEnter={() => setIsTrainingMenuOpen(true)}
+                  onMouseLeave={() => setIsTrainingMenuOpen(false)}
+                >
+                  <Link 
+                    href="/diensten/ai-training"
+                    className="flex items-center text-[#4A4A4A] hover:text-[#FF6B35] font-medium transition"
+                  >
+                    AI Training
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </Link>
+                  {isTrainingMenuOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                      {trainingSubmenu.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block px-4 py-2 text-[#4A4A4A] hover:text-[#FF6B35] hover:bg-orange-50 transition"
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </li>
               </ul>
             </nav>
           </div>
@@ -87,6 +121,22 @@ export function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <span className="block text-[#1A1F2E] font-semibold py-2">AI Training</span>
+                <ul className="pl-4 space-y-2">
+                  {trainingSubmenu.map((item) => (
+                    <li key={item.name}>
+                      <Link 
+                        href={item.href}
+                        className="block text-[#4A4A4A] hover:text-[#FF6B35] font-medium transition py-1"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             </ul>
           </nav>
         )}

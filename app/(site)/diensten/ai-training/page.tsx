@@ -66,7 +66,36 @@ function AIActIcon({ className }: { className?: string }) {
   );
 }
 
+function InspiratieIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2v4"/>
+      <path d="m6.34 6.34 2.83 2.83"/>
+      <path d="M2 12h4"/>
+      <path d="m6.34 17.66 2.83-2.83"/>
+      <path d="M12 18v4"/>
+      <path d="m17.66 17.66-2.83-2.83"/>
+      <path d="M18 12h4"/>
+      <path d="m17.66 6.34-2.83 2.83"/>
+      <circle cx="12" cy="12" r="4"/>
+    </svg>
+  );
+}
+
 const trainings = [
+  {
+    icon: InspiratieIcon,
+    title: "AI Inspiratie Sessie",
+    intro: "Ontdek wat AI écht kan betekenen voor jouw organisatie met praktische voorbeelden en live demo's.",
+    learns: [
+      "Hoe AI jouw dagelijkse processen kan verbeteren.",
+      "Praktische voorbeelden uit jouw sector.",
+      "Live demonstraties van AI-tools in actie.",
+    ],
+    result: "Je team is geïnspireerd en heeft concrete ideeën om AI toe te passen in jullie organisatie.",
+    bgColor: "from-[#9333ea] to-[#7c3aed]",
+    href: "/diensten/ai-inspiratie",
+  },
   {
     icon: ChatGPTIcon,
     title: "ChatGPT Training",
@@ -91,6 +120,7 @@ const trainings = [
     ],
     result: "Je bespaart tijd en verhoogt efficiëntie door AI direct in jouw vertrouwde Microsoft-omgeving.",
     bgColor: "from-[#0078d4] to-[#005a9e]",
+    href: "/diensten/ai-training/copilot",
   },
   {
     icon: GeminiIcon,
@@ -103,6 +133,7 @@ const trainings = [
     ],
     result: "Je benut de kracht van Google's AI om innovatie en groei te stimuleren.",
     bgColor: "from-[#4285f4] to-[#ea4335]",
+    href: "/diensten/ai-training/gemini",
   },
   {
     icon: AIBrainIcon,
@@ -130,6 +161,7 @@ const trainings = [
     ],
     result: "Je bent voorbereid op de Europese AI-wetgeving en weet hoe je AI compliant en verantwoord inzet binnen jouw organisatie.",
     bgColor: "from-[#003399] to-[#FFCC00]",
+    href: "/diensten/ai-training/eu-ai-act",
   },
 ];
 

@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Max Motion",
+  "name_for_model": "maxmotion",
+  "description_for_human": "AI oplossingen, trainingen en advies voor bedrijven in Nederland.",
+  "description_for_model": "Max Motion is een Nederlands bedrijf dat AI-oplossingen levert aan organisaties. Diensten omvatten: AI Ontwikkeling (automatisering, Microsoft Fabric & Foundry implementatie), AI Trainingen (ChatGPT, Copilot, Gemini, EU AI Act), en AI Advies. Het bedrijf helpt met praktische AI-implementatie, maatwerk oplossingen, en compliance met de EU AI Act. Doelgroep: MKB, enterprise, overheden en non-profits in Nederland.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://maxmotion.nl/openapi.yaml"
+  },
+  "logo_url": "https://maxmotion.nl/logo.png",
+  "contact_email": "contact@maxmotion.nl",
+  "legal_info_url": "https://maxmotion.nl/privacy"
+}
