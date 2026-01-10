@@ -1,0 +1,381 @@
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, Zap, Users, Shield, TrendingUp, CheckCircle2, Star } from "lucide-react";
+import { Container } from "@/components/container";
+import { CTAButton } from "@/components/cta-button";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { StickyMobileCTA } from "@/components/sticky-mobile-cta";
+import { cn } from "@/lib/utils";
+
+const valueProps = [
+  {
+    icon: Zap,
+    title: "Ship snel nuttige AI-features",
+    description:
+      "Op maat gemaakte AI-producten en interne tools die echte problemen oplossen—geen generieke software, alleen wat echt werkt voor jouw workflows.",
+  },
+  {
+    icon: Users,
+    title: "Teams hands-on getraind (AI Act-bewust)",
+    description:
+      "Praktische coaching die AI-sceptici verandert in power users. Van strategie tot implementatie, met governance en compliance ingebouwd.",
+  },
+  {
+    icon: Shield,
+    title: "Copilot/ChatGPT/Gemini verantwoord uitgerold",
+    description:
+      "Enterprise setup van Microsoft Copilot, OpenAI ChatGPT en Google Gemini met governance, databegrenzing en compliance vanaf dag één.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Security & governance ingebouwd",
+    description:
+      "Elk project omvat duidelijke metrics, beveiligingsreviews en een roadmap gekoppeld aan meetbare bedrijfsresultaten.",
+  },
+];
+
+const services = [
+  {
+    title: "AI-producten",
+    description:
+      "Bouw op maat gemaakte AI-producten en interne tools die echte problemen oplossen en naadloos integreren met jouw stack.",
+    href: "/diensten/ai-producten",
+  },
+  {
+    title: "Coaching & Training",
+    description:
+      "Hands-on coaching voor leiderschap en teams—van strategiesessies tot praktische enablement-programma's.",
+    href: "/diensten/coaching-training",
+  },
+  {
+    title: "Copilot, ChatGPT & Gemini",
+    description:
+      "Veilige, conforme uitrol van Microsoft Copilot, OpenAI ChatGPT en Google Gemini binnen jouw organisatie.",
+    href: "/diensten/copilot-chatgpt-gemini",
+  },
+];
+
+const approachPhases = [
+  {
+    phase: "Fase 1",
+    title: "Kennis & enthousiasme",
+    description:
+      "Directe winst door quick wins en hands-on workshops. We bouwen draagvlak en laten teams ervaren wat AI kan betekenen voor hun werk.",
+    outcomes: ["Eerste werkende demo's", "Team buy-in", "AI-ready mindset"],
+  },
+  {
+    phase: "Fase 2",
+    title: "Blauwdruk & use-cases",
+    description:
+      "Van idee naar actieplan. We mappen high-impact use cases, schatten ROI in en bouwen een pragmatische roadmap die past bij jouw organisatie.",
+    outcomes: ["Prioritized use cases", "ROI-berekening", "Implementatie roadmap"],
+  },
+  {
+    phase: "Fase 3",
+    title: "Automation & implementatie",
+    description:
+      "Van plan naar productie. We bouwen de eerste werkende automation, zorgen voor governance en borgen kennis zodat je team zelfstandig verder kan.",
+    outcomes: ["Live AI-automation", "Governance framework", "Zelfstandig team"],
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Max Motion hielp ons in 6 weken van AI-verwarring naar een werkend prototype. Hun coaching maakte ons team zelfverzekerd, niet alleen getraind.",
+    author: "Sarah Chen",
+    role: "VP of Engineering",
+    company: "TechCorp",
+  },
+  {
+    quote:
+      "De Copilot-uitrol verliep naadloos. Ze regelden governance, beveiliging en change management—onze teams adopteerden het sneller dan welke tool dan ook.",
+    author: "Michael Rodriguez",
+    role: "CTO",
+    company: "FinanceHub",
+  },
+  {
+    quote:
+      "Eindelijk een AI-partner die de taal van business spreekt, niet alleen tech. We zagen meetbare efficiëntiewinst in het eerste kwartaal.",
+    author: "Emily Watson",
+    role: "Chief Innovation Officer",
+    company: "RetailCo",
+  },
+];
+
+const logos = [
+  { name: "Company A", width: 120 },
+  { name: "Company B", width: 100 },
+  { name: "Company C", width: 140 },
+  { name: "Company D", width: 110 },
+  { name: "Company E", width: 130 },
+];
+
+export default function HomePage() {
+  return (
+    <>
+      <section className="relative overflow-hidden py-20 sm:py-32" style={{background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)'}}>
+        {/* Curved gradient arc background - inspired by Profico Academy */}
+        <div className="absolute inset-0 -z-10">
+          {/* Curved gradient arc SVG - more visible */}
+          <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 1440 800">
+            <defs>
+              <linearGradient id="heroArc" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#ff6b6b" stopOpacity="0.9" />
+                <stop offset="25%" stopColor="#f06292" stopOpacity="0.85" />
+                <stop offset="50%" stopColor="#ba68c8" stopOpacity="0.8" />
+                <stop offset="75%" stopColor="#4fc3f7" stopOpacity="0.85" />
+                <stop offset="100%" stopColor="#00bcd4" stopOpacity="0.9" />
+              </linearGradient>
+              <linearGradient id="heroArc2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#ff8a80" stopOpacity="0.6" />
+                <stop offset="50%" stopColor="#ea80fc" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#80d8ff" stopOpacity="0.6" />
+              </linearGradient>
+            </defs>
+            {/* Main curved arc - top wave */}
+            <path
+              d="M0,0 C240,120 480,80 720,150 C960,220 1200,100 1440,80 L1440,0 Z"
+              fill="url(#heroArc)"
+            />
+            {/* Secondary arc for depth */}
+            <path
+              d="M0,200 C360,320 720,280 1080,340 C1200,360 1320,300 1440,280 L1440,0 L0,0 Z"
+              fill="url(#heroArc2)"
+              opacity="0.5"
+            />
+          </svg>
+        </div>
+        <Container>
+          <div className="relative grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+            {/* Text Content */}
+            <div>
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                Maak AI concreet. Laat je business bewegen.
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-gray-300 sm:text-xl">
+                We bouwen AI-producten, trainen je team en zetten Copilot, ChatGPT & Gemini veilig neer.
+              </p>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <CTAButton source="hero" size="lg" />
+                <Button variant="secondary" size="lg" asChild>
+                  <Link href="/cases">
+                    Ontdek onze cases
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="mt-12 flex flex-wrap gap-4 text-sm">
+                <Badge variant="trust" className="gap-1.5 px-3 py-1.5">
+                  <CheckCircle2 className="h-4 w-4" />
+                  500+ organisaties geholpen
+                </Badge>
+                <Badge variant="trust" className="gap-1.5 px-3 py-1.5">
+                  <Star className="h-4 w-4 fill-current" />
+                  4.8 ★
+                </Badge>
+                <Badge variant="trust" className="gap-1.5 px-3 py-1.5">
+                  <TrendingUp className="h-4 w-4" />
+                  Binnen 30 dagen resultaat
+                </Badge>
+              </div>
+            </div>
+
+            {/* Hero Image */}
+            <div className="relative">
+              <div className="aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-gray-800/50 to-gray-900/50 shadow-2xl backdrop-blur-sm">
+                <Image
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=2574&auto=format&fit=crop"
+                  alt="Modern office teamwork en samenwerking"
+                  width={800}
+                  height={600}
+                  className="h-full w-full object-cover opacity-80"
+                  priority
+                />
+              </div>
+              {/* Floating badge accent */}
+              <div className="absolute -bottom-4 -right-4 rounded-xl border border-white/10 bg-gray-900/80 backdrop-blur-md p-4 shadow-xl">
+                <div className="flex items-center gap-2">
+                  <div className="h-3 w-3 animate-pulse rounded-full bg-green-500" />
+                  <span className="text-sm font-semibold text-white">Teamwork & AI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative bg-background py-20 sm:py-32">
+        <Container>
+          <div className="relative mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Waarom organisaties voor Max Motion kiezen
+            </h2>
+            <p className="mt-4 text-lg text-gray-300">
+              We combineren pragmatische productontwikkeling met coaching en veilige
+              enterprise-uitrol.
+            </p>
+          </div>
+          <div className="relative mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2">
+            {valueProps.map((prop, idx) => {
+              const Icon = prop.icon;
+              const colors = [
+                { bg: 'bg-gradient-to-br from-green-500 to-emerald-600', icon: 'text-white' },
+                { bg: 'bg-gradient-to-br from-orange-500 to-red-500', icon: 'text-white' },
+                { bg: 'bg-gradient-to-br from-purple-500 to-pink-500', icon: 'text-white' },
+                { bg: 'bg-gradient-to-br from-cyan-500 to-blue-500', icon: 'text-white' },
+              ];
+              const color = colors[idx % colors.length];
+              return (
+                <div
+                  key={prop.title}
+                  className="group relative rounded-2xl border border-white/10 bg-gray-800/50 backdrop-blur-sm p-8 shadow-lg transition-all hover:shadow-xl hover:border-white/20"
+                >
+                  <div className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl ${color.bg} shadow-lg`}>
+                    <Icon className={`h-7 w-7 ${color.icon}`} />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">{prop.title}</h3>
+                  <p className="mt-3 text-gray-300">{prop.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative bg-background py-20 sm:py-32">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Onze aanpak in 3 fasen
+            </h2>
+            <p className="mt-4 text-lg text-gray-300">
+              Van eerste quick win naar duurzame AI-adoptie—pragmatisch en meetbaar.
+            </p>
+          </div>
+          <div className="mx-auto mt-16 max-w-5xl space-y-8">
+            {approachPhases.map((phase, idx) => (
+              <div
+                key={phase.phase}
+                className="relative rounded-2xl border border-white/10 bg-gray-800/50 backdrop-blur-sm p-8 shadow-lg hover:shadow-xl hover:border-white/20 transition-all"
+              >
+                <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
+                  <div className="flex-shrink-0">
+                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <span className="text-2xl font-bold">{idx + 1}</span>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="mb-2 text-sm font-semibold uppercase tracking-wide text-primary">
+                      {phase.phase}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">{phase.title}</h3>
+                    <p className="mt-3 text-gray-300">{phase.description}</p>
+                    <ul className="mt-6 space-y-2">
+                      {phase.outcomes.map((outcome) => (
+                        <li key={outcome} className="flex items-start gap-2">
+                          <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-green-500 mt-0.5" />
+                          <span className="text-sm text-gray-300">{outcome}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-6">
+                      <CTAButton source={`approach_phase_${idx + 1}`} size="sm" variant="secondary" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative bg-background py-20 sm:py-32">
+        <Container>
+          <div className="relative mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Onze diensten
+            </h2>
+            <p className="mt-4 text-lg text-gray-300">
+              Complete AI-adoptie—van productontwikkeling tot team enablement.
+            </p>
+          </div>
+          <div className="relative mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-3">
+            {services.map((service) => (
+              <Link
+                key={service.title}
+                href={service.href}
+                className="group relative rounded-2xl border border-white/10 bg-gray-800/50 backdrop-blur-sm p-8 shadow-lg transition-all hover:shadow-xl hover:border-white/20"
+              >
+                <h3 className="text-xl font-semibold text-white group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-gray-300">{service.description}</p>
+                <div className="mt-6 flex items-center text-sm font-medium text-primary">
+                  Meer info
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="relative mt-12 text-center">
+            <Button variant="secondary" size="lg" asChild>
+              <Link href="/diensten">Bekijk alle diensten</Link>
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative bg-background py-20 sm:py-32">
+        <Container>
+          <div className="relative mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Wat onze klanten zeggen
+            </h2>
+          </div>
+          <div className="relative mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-3">
+            {testimonials.map((testimonial, idx) => (
+              <blockquote
+                key={idx}
+                className="rounded-2xl border border-white/10 bg-gray-800/50 backdrop-blur-sm p-8 shadow-lg hover:shadow-xl hover:border-white/20 transition-all"
+              >
+                <p className="text-gray-300">&ldquo;{testimonial.quote}&rdquo;</p>
+                <footer className="mt-6">
+                  <p className="font-semibold text-white">{testimonial.author}</p>
+                  <p className="text-sm text-gray-400">
+                    {testimonial.role}, {testimonial.company}
+                  </p>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-t border-border bg-primary py-16 text-primary-foreground">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Klaar om vooruit te gaan met AI?
+            </h2>
+            <p className="mt-4 text-lg opacity-90">
+              Laten we bespreken hoe Max Motion jouw organisatie kan helpen AI
+              veilig en snel te adopteren.
+            </p>
+            <div className="mt-10">
+              <CTAButton
+                source="final_cta"
+                size="lg"
+                variant="secondary"
+                className="bg-white text-primary hover:bg-white/90"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <StickyMobileCTA />
+    </>
+  );
+}

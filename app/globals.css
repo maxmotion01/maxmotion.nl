@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 14px;
+
+  /* Light theme with warm orange/red colors */
+  --background: 28 100% 97%;
+  --foreground: 220 20% 15%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 220 20% 15%;
+
+  --muted: 28 40% 95%;
+  --muted-foreground: 0 0% 29%;
+
+  --border: 0 0% 90%;
+  --ring: 12 100% 60%;
+
+  /* Warm orange/red theme colors */
+  --mm-primary: 12 100% 60%;
+  --mm-accent: 28 96% 55%;
+  --mm-primary-foreground: 0 0% 100%;
+  --mm-accent-foreground: 0 0% 100%;
+  
+  /* Service-specific colors */
+  --accent-green: 142 76% 50%;
+  --accent-blue: 217 91% 60%;
+  --accent-purple: 271 91% 65%;
+  --accent-red: 353 82% 44%;
+  
+  /* Design system colors matching template */
+  --warm-orange: 12 100% 60%;
+  --deep-orange: 28 96% 55%;
+  --warm-red: 353 82% 44%;
+  --soft-cream: 28 100% 97%;
+  --deep-navy: 220 20% 15%;
+  --warm-gray: 0 0% 29%;
+}
+
+.dark {
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+
+  --card: 222 47% 13%;
+  --card-foreground: 210 40% 98%;
+
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+
+  --border: 217 33% 17%;
+  --ring: 218 67% 39%;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
