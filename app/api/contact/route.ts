@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 import { z } from "zod";
-import { env } from "@/lib/env";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const contactSchema = z.object({
   name: z.string().min(2),
@@ -42,12 +44,38 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const data = contactSchema.parse(body);
 
-    console.log("[Contact Form Submission]", {
-      name: data.name,
-      email: data.email,
-      company: data.company,
-      message: data.message.substring(0, 100),
-      timestamp: new Date().toISOString(),
+    // Send email to Max Motion
+    await resend.emails.send({
+      from: "Max Motion Website <onboarding@resend.dev>",
+      to: "k.philips@maxmotion.nl",
+      subject: `Nieuw contactbericht van ${data.name}`,
+      html: `
+        <h2>Nieuw Contactbericht</h2>
+        <p>Er is een nieuw bericht binnengekomen via het contactformulier.</p>
+        
+        <h3>Contactgegevens:</h3>
+        <ul>
+          <li><strong>Naam:</strong> ${data.name}</li>
+          <li><strong>E-mail:</strong> ${data.email}</li>
+          <li><strong>Bedrijf:</strong> ${data.company || "Niet opgegeven"}</li>
+        </ul>
+        
+        <h3>Bericht:</h3>
+        <p>${data.message.replace(/\n/g, "<br>")}</p>
+      `,
+    });
+
+    // Send confirmation email to the customer
+    await resend.emails.send({
+      from: "Max Motion <onboarding@resend.dev>",
+      to: data.email,
+      subject: "Bedankt voor je bericht - Max Motion",
+      html: `
+        <h2>Bedankt voor je bericht, ${data.name}!</h2>
+        <p>We hebben je bericht ontvangen en nemen zo snel mogelijk contact met je op.</p>
+        
+        <p>Met vriendelijke groet,<br>Het Max Motion Team</p>
+      `,
     });
 
     return NextResponse.json({ success: true }, { status: 200 });

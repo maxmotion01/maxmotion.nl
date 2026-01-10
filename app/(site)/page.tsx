@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkles, Rocket, Calendar, TrendingUp, Clock, Bot, Star, CheckCircle2, Mail, Phone, MapPin, Brain, Cog, Lightbulb, GraduationCap, Compass, ArrowRight, Gift, Search, FileText, MessageSquare, Shield } from "lucide-react";
+import { Sparkles, Rocket, Calendar, Star, Cog, Lightbulb, GraduationCap, Compass, ArrowRight, Gift, Search, FileText, MessageSquare, Shield } from "lucide-react";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
+import { AIScanForm } from "@/components/ai-scan-form";
 
 export default function HomePage() {
   return (
@@ -205,19 +206,7 @@ export default function HomePage() {
                 </div>
               </div>
               
-              <form className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Voornaam" className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#FF6B35] focus:outline-none transition" />
-                  <input type="text" placeholder="Achternaam" className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#FF6B35] focus:outline-none transition" />
-                </div>
-                <input type="email" placeholder="E-mailadres" className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#FF6B35] focus:outline-none transition" />
-                <input type="tel" placeholder="Telefoonnummer" className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#FF6B35] focus:outline-none transition" />
-                <input type="text" placeholder="Bedrijfsnaam" className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#FF6B35] focus:outline-none transition" />
-                <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-xl text-lg">
-                  <Rocket className="mr-2 h-5 w-5" />
-                  Claim mijn gratis AI Scan
-                </Button>
-              </form>
+              <AIScanForm />
               
               <p className="text-[#4A4A4A] text-sm mt-4">
                 <Shield className="inline h-4 w-4 mr-1" />
