@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Brain, Linkedin, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Linkedin, ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 
@@ -9,11 +10,14 @@ export function Footer() {
       <Container>
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
-            <div className="flex items-center mb-6">
-              <div className="bg-gradient-to-br from-[#FF6B35] to-[#F7931E] rounded-lg p-2">
-                <Brain className="text-white h-6 w-6" />
-              </div>
-              <span className="ml-3 text-2xl font-bold">Max Motion</span>
+            <div className="mb-6">
+              <Image 
+                src="/logo.png" 
+                alt="Max Motion" 
+                width={200} 
+                height={54}
+                className="h-[54px] w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-gray-400 mb-6">
               AI-oplossingen die uw bedrijf vooruit brengen. Van automatisering tot advies.
@@ -114,7 +118,7 @@ export function Footer() {
               <Link href="/legal/terms" className="text-gray-400 hover:text-[#FF6B35] text-sm transition">
                 Algemene voorwaarden
               </Link>
-              <Link href="/legal/privacy#cookies" className="text-gray-400 hover:text-[#FF6B35] text-sm transition">
+              <Link href="/legal/cookies" className="text-gray-400 hover:text-[#FF6B35] text-sm transition">
                 Cookiebeleid
               </Link>
             </div>

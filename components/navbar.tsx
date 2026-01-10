@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Brain, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 
@@ -31,10 +32,14 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="bg-gradient-to-br from-[#FF6B35] to-[#F7931E] rounded-lg p-2">
-                <Brain className="text-white h-6 w-6" />
-              </div>
-              <span className="ml-3 text-2xl font-bold text-[#1A1F2E]">Max Motion</span>
+              <Image 
+                src="/logo.png" 
+                alt="Max Motion" 
+                width={200} 
+                height={54}
+                className="h-[54px] w-auto"
+                priority
+              />
             </Link>
             
             <nav className="hidden lg:flex ml-12">
