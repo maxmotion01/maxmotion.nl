@@ -37,7 +37,7 @@ export function Navbar() {
                 alt="Max Motion" 
                 width={200} 
                 height={54}
-                className="h-[54px] w-auto"
+                className="h-8 sm:h-10 md:h-[54px] w-auto"
                 priority
               />
             </Link>
@@ -91,8 +91,8 @@ export function Navbar() {
             >
               Plan Afspraak
             </Link>
-            <Link href="/#ai-scan">
-              <Button className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-lg">
+            <Link href="/#ai-scan" className="hidden sm:block">
+              <Button className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-lg text-sm md:text-base px-3 md:px-4">
                 Gratis AI Scan
               </Button>
             </Link>
