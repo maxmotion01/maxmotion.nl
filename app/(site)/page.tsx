@@ -48,9 +48,27 @@ export default function HomePage() {
               <div className="flex items-center space-x-6">
                 <div className="flex items-center">
                   <div className="flex -space-x-2">
-                    <div className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-blue-600"></div>
-                    <div className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-green-400 to-green-600"></div>
-                    <div className="w-10 h-10 rounded-full border-2 border-white bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                    <Image
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&h=100&auto=format&fit=crop"
+                      alt="Tevreden klant"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                    />
+                    <Image
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&h=100&auto=format&fit=crop"
+                      alt="Tevreden klant"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                    />
+                    <Image
+                      src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&h=100&auto=format&fit=crop"
+                      alt="Tevreden klant"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                    />
                   </div>
                   <div className="ml-4">
                     <div className="flex text-[#FF6B35] text-sm">
@@ -60,7 +78,7 @@ export default function HomePage() {
                       <Star className="h-4 w-4 fill-current" />
                       <Star className="h-4 w-4 fill-current" />
                     </div>
-                    <p className="text-sm text-[#4A4A4A] font-medium">50+ tevreden klanten</p>
+                    <p className="text-sm text-[#4A4A4A] font-medium">150+ tevreden klanten</p>
                   </div>
                 </div>
               </div>
@@ -70,8 +88,8 @@ export default function HomePage() {
               <div className="relative">
                 <div className="bg-gradient-to-br from-[#FF6B35] to-[#F7931E] rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition duration-500">
                   <Image
-                    src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2670&auto=format&fit=crop"
-                    alt="AI dashboard"
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2670&auto=format&fit=crop"
+                    alt="Blije mensen werken samen op kantoor"
                     width={800}
                     height={600}
                     className="w-full h-auto object-cover"
@@ -79,43 +97,7 @@ export default function HomePage() {
                   />
                 </div>
                 
-                {/* Floating stat cards */}
-                <div className="absolute -top-6 -left-6 bg-white rounded-2xl shadow-xl p-4 animate-bounce">
-                  <div className="flex items-center">
-                    <div className="bg-green-500 rounded-full p-3 mr-3">
-                      <TrendingUp className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500">Productiviteit</p>
-                      <p className="text-lg font-bold text-[#1A1F2E]">+45%</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="absolute top-1/3 -right-6 bg-white rounded-2xl shadow-xl p-4">
-                  <div className="flex items-center">
-                    <div className="bg-[#FF6B35] rounded-full p-3 mr-3">
-                      <Bot className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500">AI Modellen</p>
-                      <p className="text-lg font-bold text-[#1A1F2E]">Actief</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="absolute bottom-8 -left-4 bg-white rounded-2xl shadow-xl p-4">
-                  <div className="flex items-center">
-                    <div className="bg-blue-500 rounded-full p-3 mr-3">
-                      <Clock className="h-5 w-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500">Tijd Bespaard</p>
-                      <p className="text-lg font-bold text-[#1A1F2E]">20 uur/week</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                              </div>
             </div>
           </div>
         </Container>
@@ -125,8 +107,8 @@ export default function HomePage() {
       <section className="py-20 bg-white">
         <Container>
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#1A1F2E] mb-4">Onze AI Diensten</h2>
-            <p className="text-xl text-[#4A4A4A] max-w-2xl mx-auto">Complete AI-oplossingen op maat voor uw bedrijf</p>
+            <h2 className="text-4xl font-bold text-[#1A1F2E] mb-4">Slimme AI-oplossingen die jouw organisatie vooruit helpen</h2>
+            <p className="text-xl text-[#4A4A4A] max-w-3xl mx-auto">Bij Max Motion leveren we innovatieve AI-oplossingen op maat die jouw processen optimaliseren, productiviteit verhogen en nieuwe kansen creëren. Van AI-advies tot trainingen en implementatie – wij zorgen dat jouw organisatie klaar is voor de toekomst.</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
