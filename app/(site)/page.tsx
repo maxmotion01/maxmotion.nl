@@ -31,14 +31,18 @@ export default function HomePage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button size="lg" className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-xl">
-                  <Rocket className="mr-2 h-5 w-5" />
-                  Start met Gratis AI Scan
-                </Button>
-                <Button size="lg" variant="secondary" className="border-2">
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Plan Kennismaking
-                </Button>
+                <Link href="/contact">
+                  <Button size="lg" className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-xl">
+                    <Rocket className="mr-2 h-5 w-5" />
+                    Start met Gratis AI Scan
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button size="lg" variant="secondary" className="border-2">
+                    <Calendar className="mr-2 h-5 w-5" />
+                    Plan Kennismaking
+                  </Button>
+                </Link>
               </div>
               
               <div className="flex items-center space-x-6">
@@ -165,7 +169,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-2xl font-bold text-[#1A1F2E] mb-4">AI Advies</h3>
               <p className="text-[#4A4A4A] mb-6">Strategisch advies voor succesvolle AI-implementatie in uw bedrijf.</p>
-              <Link href="#ai-advies" className="text-[#FF6B35] font-semibold hover:text-[#F7931E] transition">
+              <Link href="/diensten/ai-advies" className="text-[#FF6B35] font-semibold hover:text-[#F7931E] transition">
                 Meer info <ArrowRight className="inline h-4 w-4 ml-2" />
               </Link>
             </div>

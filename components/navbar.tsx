@@ -12,8 +12,7 @@ const navigation = [
   { name: "AI Inspiratie", href: "/diensten/ai-inspiratie" },
   { name: "AI Training", href: "/diensten/ai-training" },
   { name: "AI Advies", href: "/diensten/ai-advies" },
-  { name: "Contact", href: "/contact" },
-];
+  ];
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,12 +47,12 @@ export function Navbar() {
           
           <div className="flex items-center space-x-4">
             <Link 
-              href="#contact"
+              href="/contact"
               className="hidden md:block text-[#1A1F2E] hover:text-[#FF6B35] font-semibold transition"
             >
               Plan Afspraak
             </Link>
-            <Link href="#ai-scan">
+            <Link href="/contact">
               <Button className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-lg">
                 Gratis AI Scan
               </Button>
