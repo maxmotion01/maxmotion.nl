@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     // Send email to Max Motion
     await resend.emails.send({
-      from: "Max Motion Website <onboarding@resend.dev>",
+      from: "Max Motion Aanvraag <noreply@maxmotion.nl>",
       to: "k.philips@maxmotion.nl",
       subject: `Nieuwe AI Scan aanvraag van ${firstName} ${lastName}`,
       html: `
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
     // Send confirmation email to the customer
     await resend.emails.send({
-      from: "Max Motion <onboarding@resend.dev>",
+      from: "Max Motion Aanvraag <noreply@maxmotion.nl>",
       to: email,
       subject: "Bedankt voor je aanvraag voor de AI Quick Scan!",
       html: `

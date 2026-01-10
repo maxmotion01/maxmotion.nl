@@ -5,9 +5,13 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Training | Max Motion",
+  title: "AI Training - ChatGPT, Copilot & Gemini Cursussen",
   description:
-    "Praktische AI trainingen voor bedrijven, non-profits en overheden. Leer werken met ChatGPT, Copilot, Gemini en andere AI-tools.",
+    "Praktische AI trainingen voor bedrijven, non-profits en overheden. Leer werken met ChatGPT, Microsoft Copilot, Google Gemini en EU AI Act compliance.",
+  keywords: ["AI training", "ChatGPT cursus", "Copilot training", "Gemini training", "AI cursus bedrijven", "EU AI Act"],
+  alternates: {
+    canonical: "/diensten/ai-training",
+  },
 };
 
 function ChatGPTIcon({ className }: { className?: string }) {

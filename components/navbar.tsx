@@ -52,7 +52,7 @@ export function Navbar() {
             >
               Plan Afspraak
             </Link>
-            <Link href="/contact">
+            <Link href="/#ai-scan">
               <Button className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-lg">
                 Gratis AI Scan
               </Button>

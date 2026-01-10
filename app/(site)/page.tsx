@@ -4,6 +4,15 @@ import { Sparkles, Rocket, Calendar, Star, Cog, Lightbulb, GraduationCap, Compas
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { AIScanForm } from "@/components/ai-scan-form";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Oplossingen voor Bedrijven | Max Motion",
+  description: "Max Motion helpt organisaties met AI automatisering, ChatGPT & Copilot trainingen, AI advies en implementatie. Vraag een gratis AI scan aan.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (
@@ -161,7 +170,7 @@ export default function HomePage() {
       </section>
 
       {/* AI Scan CTA */}
-      <section className="py-24 bg-gradient-to-br from-[#FF6B35] via-[#F7931E] to-[#C1121F] relative overflow-hidden">
+      <section id="ai-scan" className="py-24 bg-gradient-to-br from-[#FF6B35] via-[#F7931E] to-[#C1121F] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>

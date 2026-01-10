@@ -4,16 +4,28 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Mail, MapPin, Calendar, Phone } from "lucide-react";
+import { Mail, MapPin, Calendar, Phone, ChevronDown, X } from "lucide-react";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { env } from "@/lib/env";
+
+const services = [
+  { id: "ai-automation", label: "AI Automation" },
+  { id: "ai-software", label: "AI Software" },
+  { id: "ai-inspiratie", label: "AI Inspiratie" },
+  { id: "chatgpt-training", label: "ChatGPT Training" },
+  { id: "copilot-training", label: "Microsoft Copilot Training" },
+  { id: "gemini-training", label: "Google Gemini Training" },
+  { id: "ai-act-training", label: "EU AI Act Training" },
+  { id: "ai-advies", label: "AI Advies" },
+];
 
 const contactSchema = z.object({
   name: z.string().min(2, "Naam moet minimaal 2 tekens bevatten"),
   email: z.string().email("Vul een geldig e-mailadres in"),
   company: z.string().optional(),
-  message: z.string().min(10, "Bericht moet minimaal 10 tekens bevatten"),
+  services: z.array(z.string()).optional(),
+  message: z.string().optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -21,6 +33,16 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleService = (serviceId: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(serviceId)
+        ? prev.filter((id) => id !== serviceId)
+        : [...prev, serviceId]
+    );
+  };
 
   const {
     register,
@@ -39,12 +61,13 @@ export default function ContactPage() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, services: selectedServices }),
       });
 
       if (response.ok) {
         setSubmitStatus("success");
         reset();
+        setSelectedServices([]);
       } else {
         setSubmitStatus("error");
       }
@@ -208,8 +231,70 @@ export default function ContactPage() {
                 </div>
 
                 <div>
+                  <label className="block text-sm font-medium text-[#1A1F2E]">
+                    Interesse in diensten
+                  </label>
+                  <div className="relative mt-2">
+                    <button
+                      type="button"
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      className="flex w-full items-center justify-between rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-left text-[#1A1F2E] focus:border-[#FF6B35] focus:outline-none transition"
+                    >
+                      <span className={selectedServices.length === 0 ? "text-gray-400" : ""}>
+                        {selectedServices.length === 0
+                          ? "Selecteer diensten..."
+                          : `${selectedServices.length} dienst${selectedServices.length > 1 ? "en" : ""} geselecteerd`}
+                      </span>
+                      <ChevronDown className={`h-5 w-5 text-gray-400 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    
+                    {isDropdownOpen && (
+                      <div className="absolute z-10 mt-1 w-full rounded-xl border-2 border-gray-200 bg-white shadow-lg">
+                        {services.map((service) => (
+                          <label
+                            key={service.id}
+                            className="flex cursor-pointer items-center px-4 py-3 hover:bg-orange-50 transition"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={selectedServices.includes(service.id)}
+                              onChange={() => toggleService(service.id)}
+                              className="h-4 w-4 rounded border-gray-300 text-[#FF6B35] focus:ring-[#FF6B35]"
+                            />
+                            <span className="ml-3 text-[#1A1F2E]">{service.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {selectedServices.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {selectedServices.map((serviceId) => {
+                        const service = services.find((s) => s.id === serviceId);
+                        return (
+                          <span
+                            key={serviceId}
+                            className="inline-flex items-center gap-1 rounded-full bg-orange-100 px-3 py-1 text-sm text-[#FF6B35]"
+                          >
+                            {service?.label}
+                            <button
+                              type="button"
+                              onClick={() => toggleService(serviceId)}
+                              className="hover:text-[#C1121F]"
+                            >
+                              <X className="h-3 w-3" />
+                            </button>
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                <div>
                   <label htmlFor="message" className="block text-sm font-medium text-[#1A1F2E]">
-                    Bericht *
+                    Bericht
                   </label>
                   <textarea
                     {...register("message")}

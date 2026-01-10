@@ -4,11 +4,23 @@ import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const serviceLabels: Record<string, string> = {
+  "ai-automation": "AI Automation",
+  "ai-software": "AI Software",
+  "ai-inspiratie": "AI Inspiratie",
+  "chatgpt-training": "ChatGPT Training",
+  "copilot-training": "Microsoft Copilot Training",
+  "gemini-training": "Google Gemini Training",
+  "ai-act-training": "EU AI Act Training",
+  "ai-advies": "AI Advies",
+};
+
 const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   company: z.string().optional(),
-  message: z.string().min(10),
+  services: z.array(z.string()).optional(),
+  message: z.string().optional(),
 });
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -44,9 +56,13 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const data = contactSchema.parse(body);
 
+    const selectedServicesHtml = data.services && data.services.length > 0
+      ? `<li><strong>Interesse in:</strong> ${data.services.map(s => serviceLabels[s] || s).join(", ")}</li>`
+      : "";
+
     // Send email to Max Motion
     await resend.emails.send({
-      from: "Max Motion Website <onboarding@resend.dev>",
+      from: "Max Motion Aanvraag <noreply@maxmotion.nl>",
       to: "k.philips@maxmotion.nl",
       subject: `Nieuw contactbericht van ${data.name}`,
       html: `
@@ -58,16 +74,17 @@ export async function POST(request: NextRequest) {
           <li><strong>Naam:</strong> ${data.name}</li>
           <li><strong>E-mail:</strong> ${data.email}</li>
           <li><strong>Bedrijf:</strong> ${data.company || "Niet opgegeven"}</li>
+          ${selectedServicesHtml}
         </ul>
         
-        <h3>Bericht:</h3>
-        <p>${data.message.replace(/\n/g, "<br>")}</p>
+        ${data.message ? `<h3>Bericht:</h3>
+        <p>${data.message.replace(/\n/g, "<br>")}</p>` : ""}
       `,
     });
 
     // Send confirmation email to the customer
     await resend.emails.send({
-      from: "Max Motion <onboarding@resend.dev>",
+      from: "Max Motion Aanvraag <noreply@maxmotion.nl>",
       to: data.email,
       subject: "Bedankt voor je bericht - Max Motion",
       html: `

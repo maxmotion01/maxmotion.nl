@@ -75,18 +75,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#testimonials" className="text-gray-400 hover:text-[#FF6B35] transition">
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="text-gray-400 hover:text-[#FF6B35] transition">
+                <Link href="/contact" className="text-gray-400 hover:text-[#FF6B35] transition">
                   Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-400 hover:text-[#FF6B35] transition">
-                  Carrière
                 </Link>
               </li>
             </ul>
@@ -124,7 +114,7 @@ export function Footer() {
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Max Motion. Alle rechten voorbehouden.
+              © 2026 Max-Motion B.V. Alle rechten voorbehouden.
             </p>
             <div className="flex space-x-6">
               <Link href="/legal/privacy" className="text-gray-400 hover:text-[#FF6B35] text-sm transition">

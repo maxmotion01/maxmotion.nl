@@ -5,9 +5,13 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Advies | Max Motion",
+  title: "AI Advies - Strategisch AI Consultancy voor Bedrijven",
   description:
-    "Deskundig AI-advies voor jouw organisatie. Max Motion helpt bij het implementeren van ChatGPT, Microsoft Copilot, Google Gemini en andere AI-tools.",
+    "Deskundig AI-advies voor jouw organisatie. Max Motion helpt bij strategie, implementatie en toolselectie van ChatGPT, Microsoft Copilot en Google Gemini.",
+  keywords: ["AI advies", "AI consultancy", "AI strategie", "AI implementatie", "ChatGPT advies", "Copilot advies"],
+  alternates: {
+    canonical: "/diensten/ai-advies",
+  },
 };
 
 const services = [

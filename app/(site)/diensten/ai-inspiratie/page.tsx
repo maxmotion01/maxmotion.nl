@@ -5,9 +5,13 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Inspiratie | Max Motion",
+  title: "AI Inspiratie - Interactieve AI Sessies voor Teams",
   description:
-    "AI Inspiratie Sessies voor bedrijven en organisaties. Ontdek wat AI écht kan betekenen voor jouw organisatie met praktische voorbeelden en live demo's.",
+    "AI Inspiratie Sessies voor bedrijven en organisaties. Ontdek wat AI écht kan betekenen met praktische voorbeelden, live demo's en hands-on workshops.",
+  keywords: ["AI inspiratie", "AI workshop", "AI demo", "AI presentatie", "AI mogelijkheden", "AI voor bedrijven"],
+  alternates: {
+    canonical: "/diensten/ai-inspiratie",
+  },
 };
 
 const expectations = [

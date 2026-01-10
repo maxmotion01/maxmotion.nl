@@ -5,9 +5,13 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Automation | Max Motion",
+  title: "AI Automation - Automatiseer Bedrijfsprocessen",
   description:
-    "AI Automation helpt je processen te vereenvoudigen, systemen naadloos te koppelen en repetitieve taken te automatiseren—zodat jouw team tijd wint voor strategie.",
+    "AI Automation helpt je processen te vereenvoudigen, systemen naadloos te koppelen en repetitieve taken te automatiseren. Bespaar tijd en kosten met slimme AI-oplossingen.",
+  keywords: ["AI automation", "proces automatisering", "workflow automatisering", "AI integratie", "bedrijfsprocessen"],
+  alternates: {
+    canonical: "/diensten/ai-automation",
+  },
 };
 
 const whyAutomation = [
