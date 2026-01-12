@@ -84,13 +84,22 @@ export function Navbar() {
             </nav>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <Link 
               href="/contact"
               className="hidden md:block text-[#1A1F2E] hover:text-[#FF6B35] font-semibold transition"
             >
               Plan Afspraak
             </Link>
+            
+            {/* Mobile: Compact button */}
+            <Link href="/#ai-scan" className="sm:hidden">
+              <Button className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-lg text-xs px-2 py-1.5 h-8">
+                AI Scan
+              </Button>
+            </Link>
+            
+            {/* Tablet+: Full button */}
             <Link href="/#ai-scan" className="hidden sm:block">
               <Button className="bg-gradient-to-r from-[#FF6B35] to-[#F7931E] hover:from-[#F7931E] hover:to-[#FF6B35] text-white shadow-lg text-sm md:text-base px-3 md:px-4">
                 Gratis AI Scan
