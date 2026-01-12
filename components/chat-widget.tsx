@@ -13,18 +13,23 @@ interface ChatMessage {
 const quickActions = [
   {
     icon: Search,
-    label: "Gratis AI Scan",
-    message: "Ik wil graag meer weten over de gratis AI Scan. Wat houdt dit in?",
+    label: "Gratis AI Scan aanvragen",
+    message: "Ik wil graag een gratis AI Scan aanvragen voor mijn organisatie.",
   },
   {
     icon: Calendar,
-    label: "Afspraak plannen",
-    message: "Ik wil graag een afspraak plannen voor een vrijblijvend adviesgesprek.",
+    label: "Afspraak inplannen",
+    message: "Ik wil graag een vrijblijvend adviesgesprek inplannen.",
   },
   {
     icon: GraduationCap,
-    label: "AI Training",
-    message: "Welke AI trainingen bieden jullie aan?",
+    label: "Training prijzen",
+    message: "Wat kosten jullie AI trainingen?",
+  },
+  {
+    icon: Bot,
+    label: "Verschil tussen diensten",
+    message: "Wat is het verschil tussen AI Automation, AI Advies en AI Training?",
   },
 ];
 
@@ -90,13 +95,70 @@ export function ChatWidget() {
 
           const chunk = decoder.decode(value);
           assistantContent += chunk;
-          setMessages((prev) =>
-            prev.map((m) =>
-              m.id === assistantMessage.id
-                ? { ...m, content: assistantContent }
-                : m
-            )
-          );
+          
+          // Check for SEND_MESSAGE command
+          const sendMessageMatch = assistantContent.match(/\[SEND_MESSAGE:name=([^|]+)\|email=([^|]+)\|phone=([^|]+)\|message=([^\]]+)\]/);
+          
+          if (sendMessageMatch) {
+            const [fullMatch, name, email, phone, message] = sendMessageMatch;
+            
+            // Remove the command from the visible content
+            const cleanContent = assistantContent.replace(fullMatch, "").trim();
+            
+            setMessages((prev) =>
+              prev.map((m) =>
+                m.id === assistantMessage.id
+                  ? { ...m, content: cleanContent + "\n\n✉️ Ik verstuur je bericht..." }
+                  : m
+              )
+            );
+            
+            // Send the message via API
+            try {
+              const sendResponse = await fetch("/api/chat-contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, phone, message }),
+              });
+              
+              if (sendResponse.ok) {
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === assistantMessage.id
+                      ? { ...m, content: cleanContent + "\n\n✅ Je bericht is verstuurd! Het Max Motion team neemt zo snel mogelijk contact met je op via e-mail of telefoon." }
+                      : m
+                  )
+                );
+              } else {
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === assistantMessage.id
+                      ? { ...m, content: cleanContent + "\n\n❌ Er ging iets mis bij het versturen. Probeer het opnieuw of gebruik het contactformulier op /contact" }
+                      : m
+                  )
+                );
+              }
+            } catch (sendError) {
+              console.error("Send message error:", sendError);
+              setMessages((prev) =>
+                prev.map((m) =>
+                  m.id === assistantMessage.id
+                    ? { ...m, content: cleanContent + "\n\n❌ Er ging iets mis bij het versturen. Probeer het opnieuw of gebruik het contactformulier op /contact" }
+                    : m
+                )
+              );
+            }
+            
+            assistantContent = cleanContent;
+          } else {
+            setMessages((prev) =>
+              prev.map((m) =>
+                m.id === assistantMessage.id
+                  ? { ...m, content: assistantContent }
+                  : m
+              )
+            );
+          }
         }
       }
     } catch (error) {
@@ -153,7 +215,7 @@ export function ChatWidget() {
                 <Bot className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold text-white">Maxie</h3>
+                <h3 className="font-semibold text-white">Lynn</h3>
                 <p className="text-sm text-white/80">Hoe kan ik je helpen?</p>
               </div>
             </div>
@@ -169,7 +231,10 @@ export function ChatWidget() {
                   </div>
                   <div className="rounded-2xl rounded-tl-none bg-white p-3 shadow-sm border border-gray-100">
                     <p className="text-sm text-gray-700">
-                      Hallo! 👋 Ik ben Maxie, de AI-assistent van Max Motion. Stel me een vraag over onze diensten, of kies een snelle actie hieronder.
+                      Hoi! 👋 Ik ben Lynn. Hoe kan ik je helpen?
+                    </p>
+                    <p className="text-sm text-gray-700 mt-2">
+                      Wil je een gratis AI Scan aanvragen, een afspraak inplannen, of meer weten over onze trainingen en prijzen? Kies hieronder een optie of stel me gerust een vraag!
                     </p>
                   </div>
                 </div>

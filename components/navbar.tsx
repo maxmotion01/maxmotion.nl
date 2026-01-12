@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "AI Ontwikkeling", href: "/diensten/ai-automation" },
+  { name: "AI Automation", href: "/diensten/ai-automation" },
   { name: "AI Advies", href: "/diensten/ai-advies" },
 ];
 
