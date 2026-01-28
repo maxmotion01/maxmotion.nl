@@ -21,6 +21,7 @@ export function AIScanForm() {
       email: formData.get("email"),
       phone: formData.get("phone"),
       company: formData.get("company"),
+      website: formData.get("website"),
     };
 
     try {
@@ -59,6 +60,18 @@ export function AIScanForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Honeypot field - hidden from users, bots will fill it */}
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          type="text"
+          name="website"
+          id="website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="grid md:grid-cols-2 gap-4">
         <input
           type="text"

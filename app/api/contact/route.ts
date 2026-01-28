@@ -21,6 +21,7 @@ const contactSchema = z.object({
   company: z.string().optional(),
   services: z.array(z.string()).optional(),
   message: z.string().optional(),
+  website: z.string().optional(),
 });
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -55,6 +56,12 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const data = contactSchema.parse(body);
+
+    // Honeypot check - if filled, it's likely a bot
+    if (data.website && data.website.length > 0) {
+      // Return success to not alert the bot, but don't send email
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
 
     const selectedServicesHtml = data.services && data.services.length > 0
       ? `<li><strong>Interesse in:</strong> ${data.services.map(s => serviceLabels[s] || s).join(", ")}</li>`

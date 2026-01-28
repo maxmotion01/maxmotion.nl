@@ -26,6 +26,7 @@ const contactSchema = z.object({
   company: z.string().optional(),
   services: z.array(z.string()).optional(),
   message: z.string().optional(),
+  website: z.string().max(0, "Spam detected").optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -188,6 +189,18 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="rounded-2xl border-2 border-gray-200 bg-gradient-to-br from-orange-50 to-white p-8 shadow-lg">
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {/* Honeypot field - hidden from users, bots will fill it */}
+                <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    {...register("website")}
+                    type="text"
+                    id="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-[#1A1F2E]">
                     Naam *

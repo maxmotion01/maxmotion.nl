@@ -1,11 +1,45 @@
 import { Resend } from "resend";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const limit = rateLimitMap.get(ip);
+
+  if (!limit || now > limit.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + 60000 });
+    return true;
+  }
+
+  if (limit.count >= 5) {
+    return false;
+  }
+
+  limit.count++;
+  return true;
+}
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for") || "unknown";
+
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { error: "Te veel aanvragen. Probeer het later opnieuw." },
+      { status: 429 }
+    );
+  }
+
   try {
-    const { firstName, lastName, email, phone, company } = await req.json();
+    const { firstName, lastName, email, phone, company, website } = await req.json();
+
+    // Honeypot check - if filled, it's likely a bot
+    if (website && website.length > 0) {
+      // Return success to not alert the bot, but don't send email
+      return NextResponse.json({ success: true });
+    }
 
     // Validate required fields
     if (!firstName || !lastName || !email) {
